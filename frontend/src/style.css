@@ -1,8 +1,47 @@
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  color: #1f2933;
-  background: #f4f6f8;
+
+  --color-bg: #f4f6f8;
+  --color-text: #1f2933;
+  --color-text-soft: #3e4c59;
+  --color-muted: #616e7c;
+  --color-faint: #9aa5b1;
+  --color-surface: #fff;
+  --color-border: #e4e7eb;
+  --color-divider: #f0f2f4;
+  --color-input-border: #cbd2d9;
+  --color-input-bg: #fff;
+  --color-primary: #2f6fed;
+  --color-primary-text: #fff;
+  --color-danger: #c62828;
+  --color-error-bg: #fdecea;
+  --color-error-border: #f5c2c0;
+  --color-error-text: #b3261e;
+
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #10151a;
+    --color-text: #e6ebf1;
+    --color-text-soft: #c3ccd6;
+    --color-muted: #9aa7b4;
+    --color-faint: #74818f;
+    --color-surface: #1a2128;
+    --color-border: #2c353f;
+    --color-divider: #242c34;
+    --color-input-border: #3a4550;
+    --color-input-bg: #141a20;
+    --color-primary: #2563eb;
+    --color-primary-text: #fff;
+    --color-danger: #ff8a80;
+    --color-error-bg: #3a1d1b;
+    --color-error-border: #7f3a34;
+    --color-error-text: #ffb4ab;
+  }
 }
 
 * {
@@ -26,7 +65,7 @@ body {
 
 .subtitle {
   margin: 0 0 24px;
-  color: #616e7c;
+  color: var(--color-muted);
   font-size: 14px;
 }
 
@@ -38,8 +77,8 @@ body {
 }
 
 .runtime-card {
-  background: #fff;
-  border: 1px solid #e4e7eb;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 14px 16px;
   font-size: 13px;
@@ -52,12 +91,12 @@ body {
 
 .runtime-card p {
   margin: 4px 0;
-  color: #3e4c59;
+  color: var(--color-text-soft);
 }
 
 .panel {
-  background: #fff;
-  border: 1px solid #e4e7eb;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 18px;
   margin-bottom: 16px;
@@ -77,11 +116,15 @@ body {
 input,
 select {
   padding: 9px 11px;
-  border: 1px solid #cbd2d9;
+  border: 1px solid var(--color-input-border);
   border-radius: 8px;
   font-size: 14px;
-  background: #fff;
+  background: var(--color-input-bg);
   color: inherit;
+}
+
+input::placeholder {
+  color: var(--color-faint);
 }
 
 .form-row input {
@@ -92,8 +135,8 @@ button {
   padding: 9px 16px;
   border: none;
   border-radius: 8px;
-  background: #2f6fed;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-primary-text);
   font-size: 14px;
   cursor: pointer;
 }
@@ -105,14 +148,14 @@ button:disabled {
 
 button.ghost {
   background: transparent;
-  color: #c62828;
+  color: var(--color-danger);
   padding: 6px 10px;
 }
 
 .stats {
   margin: 14px 0 0;
   font-size: 13px;
-  color: #616e7c;
+  color: var(--color-muted);
 }
 
 .todo-list,
@@ -127,7 +170,7 @@ button.ghost {
   align-items: center;
   gap: 10px;
   padding: 10px 0;
-  border-top: 1px solid #f0f2f4;
+  border-top: 1px solid var(--color-divider);
 }
 
 .todo-main {
@@ -148,7 +191,7 @@ button.ghost {
 }
 
 .todo-list li.done .todo-title {
-  color: #9aa5b1;
+  color: var(--color-faint);
   text-decoration: line-through;
 }
 
@@ -157,20 +200,20 @@ button.ghost {
   align-items: center;
   justify-content: space-between;
   padding: 8px 0;
-  border-top: 1px solid #f0f2f4;
+  border-top: 1px solid var(--color-divider);
 }
 
 .error {
-  background: #fdecea;
-  border: 1px solid #f5c2c0;
-  color: #b3261e;
+  background: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  color: var(--color-error-text);
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 14px;
 }
 
 .muted {
-  color: #9aa5b1;
+  color: var(--color-faint);
   font-size: 13px;
 }
 
@@ -180,6 +223,6 @@ button.ghost {
   justify-content: space-between;
   gap: 12px;
   margin-top: 20px;
-  color: #616e7c;
+  color: var(--color-muted);
   font-size: 13px;
 }

@@ -8,12 +8,15 @@
 
 前端页面顶部会显示两个后端服务返回的实际运行时版本（Node.js 版本、Java 版本、Spring Boot 版本），用于直接确认离线机器的运行环境是否正常；页面上的待办操作调用 Node.js 服务，分类操作调用 Spring Boot 服务，从而同时验证两条调用链路。
 
+界面同时适配浅色与深色主题，跟随操作系统 / 浏览器的 `prefers-color-scheme` 设置自动切换，页面内不提供手动开关。
+
 ## 目录结构
 
 ```
 run_time_check/
 ├── .gitignore
 ├── README.md
+├── prod_deploy.md                # 生产环境部署指南
 ├── backend-node/                 # Node.js 后端（Express）
 │   ├── package.json
 │   ├── server.js
@@ -102,6 +105,8 @@ npm run preview   # http://localhost:4173
 
 `npm run dev` 与 `npm run preview` 都已配置接口代理，因此两种方式都可以直接访问后端。
 
+> 部署到生产服务器（Nginx 统一入口 + systemd 托管两个后端）请参考 [prod_deploy.md](./prod_deploy.md)。
+
 ## 接口一览
 
 前端通过 Vite 代理访问后端：
@@ -141,7 +146,7 @@ npm run preview   # http://localhost:4173
 
 - 首次启动时目录和文件会自动创建。
 - 删除对应 JSON 文件并重启服务即可重置数据。
-- Node.js 后端可通过环境变量覆盖配置：`PORT`（端口）、`DATA_DIR`（数据目录）。
+- Node.js 后端可通过环境变量覆盖配置：`PORT`（端口）、`HOST`（监听地址，默认 `0.0.0.0`）、`DATA_DIR`（数据目录）。
 - Spring Boot 后端可通过 `application.properties` 中的 `server.port` 与 `app.data-file` 修改端口和数据文件路径。
 
 ## 离线 Nexus 配置参考

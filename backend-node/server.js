@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 const DATA_DIR = process.env.DATA_DIR ?? path.join(path.dirname(fileURLToPath(import.meta.url)), 'data')
 const DATA_FILE = path.join(DATA_DIR, 'todos.json')
 const PORT = Number(process.env.PORT ?? 3001)
+const HOST = process.env.HOST ?? '0.0.0.0'
 
 const app = express()
 app.use(express.json())
@@ -165,7 +166,7 @@ app.use((error, req, res, next) => {
 })
 
 await loadTodos()
-app.listen(PORT, () => {
-  console.log(`Node.js 后端已启动：http://localhost:${PORT}`)
+app.listen(PORT, HOST, () => {
+  console.log(`Node.js 后端已启动：http://${HOST}:${PORT}`)
   console.log(`待办数据文件：${DATA_FILE}`)
 })
