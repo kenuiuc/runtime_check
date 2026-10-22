@@ -1,0 +1,17 @@
+{
+  "name": "todo-backend-node",
+  "version": "1.0.0",
+  "private": true,
+  "description": "待办清单 Node.js 后端（Express + 本地 JSON 文件）",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

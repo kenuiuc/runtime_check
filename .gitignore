@@ -1,0 +1,23 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 前端构建产物
+frontend/dist/
+
+# Java / Maven 构建产物
+target/
+*.class
+
+# 运行期本地数据
+backend-node/data/
+backend-java/data/
+
+# 编辑器与系统文件
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
